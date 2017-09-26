@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2017 ejpark.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the GNU General Public License v3.0
+ * which accompanies this distribution, and is available at
+ * http://www.gnu.org/licenses/gpl-3.0.html
+ * 
+ * Contributors:
+ *     eungjun11@gmail.com - initial API and implementation
+ ******************************************************************************/
+
 package psn.ej.study.algo.compete.a14650;
 
 import java.util.ArrayList;
@@ -8,6 +19,8 @@ import java.util.Scanner;
  * 입력 N을 입력 (1 <= N <= 9)
  * 출력 0, 1, 2만 가지고 만들 수 있는 N자리 3의 배수의 개수를 출력.
  * 
+ * @author ej.park
+ *
  */
 public class Main {
 	private static Scanner sc = new Scanner(System.in);

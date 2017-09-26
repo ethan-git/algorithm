@@ -1,4 +1,4 @@
-package psn.ej.study.algo.basic.a;
+package psn.ej.study.algo.basic.a1000;
 
 import java.util.Scanner;
 

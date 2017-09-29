@@ -16,8 +16,6 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * 입력 N을 입력 (1 <= N <= 9)
- * 출력 0, 1, 2만 가지고 만들 수 있는 N자리 3의 배수의 개수를 출력.
  * 
  * @author ej.park
  *

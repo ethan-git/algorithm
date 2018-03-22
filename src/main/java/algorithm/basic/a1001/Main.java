@@ -9,16 +9,23 @@
  *     eungjun11@gmail.com - initial API and implementation
  ******************************************************************************/
 
-package psn.ej.study.algo.basic.a2557;
+package algorithm.basic.a1001;
+
+import java.util.Scanner;
 
 /**
- * Hello World!
+ * a-b
  * 
  * @author ej.park
  *
  */
 public class Main {
-	public static void main(String[] args) {
-        System.out.println("Hello World!");
-    }
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		int a, b;
+		a = sc.nextInt();
+		b = sc.nextInt();
+		System.out.println(a - b);
+		sc.close();
+	}
 }

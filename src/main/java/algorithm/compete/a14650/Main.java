@@ -9,7 +9,7 @@
  *     eungjun11@gmail.com - initial API and implementation
  ******************************************************************************/
 
-package psn.ej.study.algo.compete.a14650;
+package algorithm.compete.a14650;
 
 import java.util.ArrayList;
 import java.util.List;

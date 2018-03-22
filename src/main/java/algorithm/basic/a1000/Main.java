@@ -9,7 +9,7 @@
  *     eungjun11@gmail.com - initial API and implementation
  ******************************************************************************/
 
-package psn.ej.study.algo.basic.a1000;
+package algorithm.basic.a1000;
 
 import java.util.Scanner;
 

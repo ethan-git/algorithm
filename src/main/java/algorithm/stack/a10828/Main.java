@@ -9,7 +9,7 @@
  *     eungjun11@gmail.com - initial API and implementation
  ******************************************************************************/
 
-package psn.ej.study.algo.stack.a10828;
+package algorithm.stack.a10828;
 
 import java.util.Scanner;
 import java.util.Stack;

@@ -34,10 +34,6 @@ public class A1000 {
 		return String.format("%0"+lpadZeroCnt+"d", Integer.parseInt(Integer.toBinaryString(number)));
 	}
 
-	private static int getIntValue(String str, int index) {
-		return str.charAt(index)-48;
-	}
-	
 	public static void main(String[] args) {
 		int n = sc.nextInt();
 		sc.nextLine();
@@ -46,19 +42,8 @@ public class A1000 {
 
 		String[] map = new String[n];
 		for(int i=0; i<n; i++) {
-			String binaryString1 = getBinaryString(arr1[i], n);
-			String binaryString2 = getBinaryString(arr2[i], n);
-			StringBuffer sb = new StringBuffer();
-			for(int j=0; j<n; j++ ) {
-				int a = getIntValue(binaryString1, j);
-				int b = getIntValue(binaryString2, j);
-				if((a|b)==0) {
-					sb.append("v");
-				}else {
-					sb.append("#");
-				}
-			}
-			map[i] = sb.toString();
+			int r = (arr1[i]|arr2[i]);
+			map[i] = getBinaryString(r, n).replaceAll("1", "#").replaceAll("0", "v");
 		}
 		System.out.println(Arrays.toString(map));
 /*

@@ -9,7 +9,7 @@
  *     eungjun11@gmail.com - initial API and implementation
  ******************************************************************************/
 
-package algorithm.datastructure.a3111;
+package algorithm.stack.a3111;
 
 import java.util.Scanner;
 

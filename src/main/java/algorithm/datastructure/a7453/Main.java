@@ -11,10 +11,9 @@
 
 package algorithm.datastructure.a7453;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Stack;
 
 /**
  * @author ejpark
@@ -25,53 +24,68 @@ public class Main {
 	private static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-//		 int[][] numbers = { { -45, 22, 42, -16 }, { -41, -27, 56, 30 }, { -36, 53,
-//		 -37, 77 }, { -36, 30, -75, -46 },
-//		 { 26, -38, -10, 62 }, { -32, -54, -6, 45 } };
-//		 int n = numbers.length;
+		int[][] numbers = { { -45, 22, 42, -16 }, { -41, -27, 56, 30 }, { -36, 53, -37, 77 }, { -36, 30, -75, -46 },
+				{ 26, -38, -10, 62 }, { -32, -54, -6, 45 } };
+		int n = numbers.length;
 		long start = System.currentTimeMillis();
 
-		int n = 4000;
-		int[][] numbers = new int[n][4];
-		Random random = new Random();
-		int bounds = (int) Math.pow(2, 28);
-		for (int i = 0; i < n; i++) {
-			String number = random.nextInt(bounds) + " -" + random.nextInt(bounds) + " -" + random.nextInt(bounds) + " "
-					+ random.nextInt(bounds);
-			String[] numberArr = number.split(" ");
-			for (int j = 0; j < numberArr.length; j++) {
-				numbers[i][j] = Integer.parseInt(numberArr[j]);
-			}
-		}
-		System.out.println(String.format("%.3f", (System.currentTimeMillis() - start) / 1000.0));
+		// int n = 4000;
+		// int[][] numbers = new int[n][4];
+		// Random random = new Random();
+		// int bounds = (int) Math.pow(2, 28);
+		// for (int i = 0; i < n; i++) {
+		// String number = random.nextInt(bounds) + " -" + random.nextInt(bounds) + " -"
+		// + random.nextInt(bounds) + " "
+		// + random.nextInt(bounds);
+		// String[] numberArr = number.split(" ");
+		// for (int j = 0; j < numberArr.length; j++) {
+		// numbers[i][j] = Integer.parseInt(numberArr[j]);
+		// }
+		// }
+
 		int cnt = 0;
-		Stack<Integer> list = new Stack<Integer>();
+		int[] arr1 = new int[n * n];
+		int[] arr2 = new int[n * n];
+		int index = 0;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-				list.push((+numbers[i][0] + numbers[j][1]) * -1);
+				arr1[index] = numbers[i][0] + numbers[j][1];
+				arr2[index] = numbers[i][2] + numbers[j][3];
+				index++;
 			}
 		}
-		System.out.println(String.format("%.3f", (System.currentTimeMillis() - start) / 1000.0));
-		Collections.sort(list);
-		int len = list.size() - 1;
-		System.out.println(String.format("%.3f", (System.currentTimeMillis() - start) / 1000.0));
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				int startIdx = 0;
-				int endIdx = len;
-				int num = numbers[i][2] + numbers[j][3];
-				while (endIdx - startIdx >= 0) {
-					int mid = (startIdx + endIdx) / 2;
-					int target = list.get(mid);
-					if (target > num) {
-						endIdx = mid - 1;
-					} else if (target < num) {
-						startIdx = mid + 1;
+		Arrays.sort(arr1);
+		Arrays.sort(arr2);
+
+		int min = 0;
+		int max = arr1.length - 1;
+		int temp = 0;
+		while (min < arr1.length && max >= 0) {
+			if (arr1[min] + arr2[max] < 0) {
+				min++;
+			} else if (arr1[min] + arr2[max] > 0) {
+				max--;
+			} else {
+				int count1 = 0;
+				temp = arr1[min];
+				for (; min < arr1.length; min++) {
+					if (arr1[min] == temp) {
+						count1++;
+						min++;
 					} else {
-						cnt++;
 						break;
 					}
 				}
+				int count2 = 0;
+				temp = arr2[max];
+				for (; max >= 0; max--) {
+					if (arr2[max] == temp) {
+						count2++;
+					} else {
+						break;
+					}
+				}
+				cnt += count1 * count2;
 			}
 		}
 		System.out.println(cnt);

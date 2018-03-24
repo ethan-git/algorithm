@@ -44,8 +44,9 @@ public class Main {
 		// }
 
 		int cnt = 0;
-		int[] arr1 = new int[n * n];
-		int[] arr2 = new int[n * n];
+		int totSize = n*n;
+		int[] arr1 = new int[totSize];
+		int[] arr2 = new int[totSize];
 		int index = 0;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
@@ -56,11 +57,11 @@ public class Main {
 		}
 		Arrays.sort(arr1);
 		Arrays.sort(arr2);
-
+        
 		int min = 0;
-		int max = arr1.length - 1;
+		int max = totSize - 1;
 		int temp = 0;
-		while (min < arr1.length && max >= 0) {
+		while (min < totSize && max >= 0) {
 			if (arr1[min] + arr2[max] < 0) {
 				min++;
 			} else if (arr1[min] + arr2[max] > 0) {
@@ -68,10 +69,9 @@ public class Main {
 			} else {
 				int count1 = 0;
 				temp = arr1[min];
-				for (; min < arr1.length; min++) {
+				for (; min < totSize; min++) {
 					if (arr1[min] == temp) {
 						count1++;
-						min++;
 					} else {
 						break;
 					}
@@ -85,7 +85,7 @@ public class Main {
 						break;
 					}
 				}
-				cnt += count1 * count2;
+				cnt += count1*count2;
 			}
 		}
 		System.out.println(cnt);

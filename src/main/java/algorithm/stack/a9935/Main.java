@@ -11,8 +11,8 @@
 
 package algorithm.stack.a9935;
 
-import java.util.Scanner;
-import java.util.Stack;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 /**
  * 
@@ -36,63 +36,63 @@ import java.util.Stack;
  *
  */
 public class Main {
-	private static Scanner sc = new Scanner(System.in);
 
-	public static void main(String args[]) {
-//		String t = sc.nextLine();
-//		String a = sc.nextLine();
-		 String t = "mirkovC4nizCC44";
-		 String a = "C4";
+	public static void main(String args[]) throws Exception {
+		 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		 String t = br.readLine();
+		 String bomb = br.readLine();
+//		String t = "mirkovC4nizCC44";
+//		String bomb = "C4";
 		long start = System.currentTimeMillis();
 
-		char[] sentenceArr = t.toCharArray();
-		char[] bombArr = a.toCharArray();
-		int slen = sentenceArr.length;
-		int blen = bombArr.length;
-		int tmp = blen - 1;
-		Stack<Character> origin = new Stack<Character>();
-		Stack<Character> tempStack = new Stack<Character>();
-		for (int i = 0; i < slen; i++) {
-			origin.push(sentenceArr[i]);
-			while (!origin.empty()) {
-				if (origin.peek() == bombArr[tmp] && origin.size() >= tmp) {
-					tempStack.push(origin.peek());
-					origin.pop();
-					tmp--;
-					if (tmp == -1) {
-						tempStack.clear();
-						tmp = blen - 1;
-					}
-				}else {
-					while (!tempStack.empty()) {
-						origin.push(tempStack.peek());
-						tempStack.pop();
-					}
-					tmp = blen - 1;
-					break;
-				}
+		Stack stack = new Stack();
+		for (int i = 0; i < t.length(); i++) {
+			stack.push(t.charAt(i));
+			if (t.charAt(i) == bomb.charAt(bomb.length() - 1)) {
+				stack.check(bomb);
 			}
-			while (!tempStack.empty()) {
-				origin.push(tempStack.peek());
-				tempStack.pop();
-			}
-			tmp = blen - 1;
 		}
-
-		if (origin.empty()) {
-			System.out.println("FRULA");
-		}
-
-		Stack<Character> stack = new Stack<Character>();
-		while (!origin.empty()) {
-			stack.push(origin.peek());
-			origin.pop();
-		}
-		while (!stack.empty()) {
-			System.out.print(stack.peek());
-			stack.pop();
-		}
-		System.out.println();
+		stack.print();
 		System.out.println(String.format("%.3f", (System.currentTimeMillis() - start) / 1000.0));
+	}
+
+	public static class Stack {
+		private int top = 0;
+		private char[] stack = new char[1000003];
+
+		public void push(char chr) {
+			stack[top++] = chr;
+		}
+
+		public void check(String bomb) {
+			if (top < bomb.length()) {
+				return;
+			}
+
+			int index = top - 1;
+			boolean isBomb = true;
+			for (int i = bomb.length() - 1; i >= 0; i--) {
+				if (stack[index] != bomb.charAt(i)) {
+					isBomb = false;
+				}
+				index--;
+			}
+
+			if (isBomb) {
+				top = top - bomb.length();
+			}
+		}
+
+		public void print() {
+			if (top == 0) {
+				System.out.println("FRULA");
+			} else {
+				StringBuilder sb = new StringBuilder();
+				for (int i = 0; i < top; i++) {
+					sb.append(stack[i]);
+				}
+				System.out.println(sb.toString());
+			}
+		}
 	}
 }

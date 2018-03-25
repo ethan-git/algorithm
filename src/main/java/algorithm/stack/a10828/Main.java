@@ -43,6 +43,7 @@ public class Main {
 		int commandCnt = sc.nextInt();
 		sc.nextLine();
 		Stack<Integer> stack = new Stack<Integer>();
+		
 		for(int i=0; i<commandCnt; i++) {
 			String[] commands = sc.nextLine().split(" ");
 			String command = commands[0];

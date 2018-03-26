@@ -26,7 +26,7 @@ public class A1005 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		boolean isOperation = true;
 		StringBuilder output = new StringBuilder();
-		
+
 		Storage data = new Storage();
 		while (isOperation) {
 			String input = br.readLine();
@@ -63,9 +63,10 @@ public class A1005 {
 			}
 			return min;
 		}
+
 		public void add(int value) {
 			list.add(value);
-			if(min == null) {
+			if (min == null) {
 				min = value;
 			}
 			if (value < min) {

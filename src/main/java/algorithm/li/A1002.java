@@ -22,7 +22,25 @@ public class A1002 {
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	    String input = br.readLine();
+		int n = Integer.parseInt(br.readLine());
+		String arrStr = br.readLine();
+		String[] arr = arrStr.split(" ");
+		String[] param = br.readLine().split(" ");
+		int dest = Integer.parseInt(param[0]);
+		int src = Integer.parseInt(param[1]);
+		int size = Integer.parseInt(param[2]);
+		if (size <= 0) {
+			System.out.println(arrStr);
+			return;
+		}
+		for (int i = 0; i < size; i++) {
+			arr[dest + i] = arr[src + i];
+		}
+		StringBuilder output = new StringBuilder();
+		for (int i = 0; i < n; i++) {
+			output.append(arr[i]).append(" ");
+		}
+		System.out.println(output.toString());
 	}
 
 }

@@ -22,26 +22,10 @@ public class A1001 {
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	       int n = Integer.parseInt(br.readLine());
-	       String arrStr = br.readLine();
-	       String[] arr = arrStr.split(" ");
-	       String[] param = br.readLine().split(" ");
-	       int dest = Integer.parseInt(param[0]);
-	       int src = Integer.parseInt(param[1]);
-	       int size = Integer.parseInt(param[2]);
-	       if(size <= 0){
-	         System.out.println(arrStr);
-	         return;
-	       }
-	       for(int i=0; i<size; i++){
-	         arr[dest+i] = arr[src+i];
-	       }
-	       StringBuilder output = new StringBuilder();
-	       for(int i=0; i<n; i++){
-	         output.append(arr[i]).append(" ");
-	       }
-	       System.out.println(output.toString());
-	    
+		String[] arr = br.readLine().split(" ");
+		int width = Integer.parseInt(arr[0]);
+		int height = Integer.parseInt(arr[1]);
+		int area = width * height;
+		System.out.println(area);
 	}
-
 }

@@ -78,9 +78,7 @@ public class A1005 {
 			if (list.isEmpty()) {
 				return -1;
 			}
-			int value = list.get(0);
-			list.remove(0);
-			return value;
+			return list.remove(0);
 		}
 	}
 }

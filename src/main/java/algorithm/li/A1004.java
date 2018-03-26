@@ -81,10 +81,8 @@ public class A1004 {
 
 		public int remove(int key) {
 			if (map.containsKey(key)) {
-				int value = map.get(key);
-				map.remove(key);
 				list.remove(list.indexOf(key));
-				return value;
+				return map.remove(key);
 			}
 			return -1;
 		}

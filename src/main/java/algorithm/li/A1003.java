@@ -63,8 +63,8 @@ public class A1003 {
 		boolean isCycle = false;
 		for(Node root : list) {
 			System.out.println("RootNode:"+root);
-			int mDepthType = getType(root, m, root.getType());
-			if(mDepthType == 1) {
+			int cycleType = getType(root, m, root.getType());
+			if(cycleType == 1) {
 				isCycle = true;
 				break;
 			}

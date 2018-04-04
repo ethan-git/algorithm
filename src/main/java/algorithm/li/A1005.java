@@ -14,6 +14,7 @@ package algorithm.li;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -54,24 +55,19 @@ public class A1005 {
 	}
 
 	public static class Storage {
-		private Integer min = null;
 		private List<Integer> list = new ArrayList<Integer>();
 
 		public int min() {
 			if (list.isEmpty()) {
 				return -1;
 			}
-			return min;
+			List<Integer> temp = new ArrayList<Integer>(list);
+			Collections.sort(temp);
+			return temp.get(0);
 		}
 
 		public void add(int value) {
 			list.add(value);
-			if (min == null) {
-				min = value;
-			}
-			if (value < min) {
-				min = value;
-			}
 		}
 
 		public int remove() {

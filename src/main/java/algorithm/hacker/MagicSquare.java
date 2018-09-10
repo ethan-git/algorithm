@@ -1,3 +1,6 @@
+package algorithm.hacker
+
+public class MagicSquare {
 	public static int[][] test() {
 		int size = 3;
 		int maxIdx = size - 1;
@@ -91,3 +94,4 @@
 			}
 		}
 	}
+}

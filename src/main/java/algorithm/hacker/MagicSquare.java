@@ -59,7 +59,17 @@ public class MagicSquare {
 			baseMagic = possible[i];
 		}
 		baseMagic = test2(magic);
-		
+		possible[maxPossible] = baseMagic;
+		for(int i=maxPossible+1; i<maxPossible*2; i++) {
+			for(int j=0; j<size; j++) {
+				int rowIdx = size-1;
+				for(int k=0; k<size; k++) {
+					possible[i][j][k] = baseMagic[rowIdx][j];
+					rowIdx--;
+				}
+			}
+			baseMagic = possible[i];
+		}
 		return possible;
 	}
 	
@@ -84,14 +94,7 @@ public class MagicSquare {
 				int[] pos = possible[i][j];
 				System.out.println(String.format("%d %d %d", pos[0], pos[1], pos[2]));
 			}
-		}
-		int[][] oppmagic = test2(magic);
-		int[][][] oppPossible = test1(oppmagic);
-		for(int i=0; i<oppPossible.length; i++) {
-			for(int j=0; j<3; j++) {
-				int[] pos = oppPossible[i][j];
-				System.out.println(String.format("%d %d %d", pos[0], pos[1], pos[2]));
-			}
+			System.out.println();
 		}
 	}
 }
